@@ -90,12 +90,13 @@ namespace quanlykhachsan
 
         private void btnthoat_Click(object sender, EventArgs e)
         {
-            
+            Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            temp = 1;
+            trangthai(true);
         }
     }
 }
