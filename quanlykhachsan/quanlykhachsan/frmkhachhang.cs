@@ -69,7 +69,14 @@ namespace quanlykhachsan
 
         private void btnxoa_Click(object sender, EventArgs e)
         {
-            
+            khachhangBLL khBLL = new khachhangBLL();
+            DialogResult luu = MessageBox.Show("Bạn chắc chắn xóa??", "Thông báo thêm mới", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (luu == DialogResult.Yes)
+            {
+
+                khBLL.xoa_khachhang(int.Parse(txtmakhachhang.Text));
+                hienthi();
+            }
         }
 
         private void btnluu_Click(object sender, EventArgs e)
