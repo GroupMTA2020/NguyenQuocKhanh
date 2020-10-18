@@ -53,21 +53,39 @@ namespace quanlykhachsan
             cbgiotinhkh.Text = row.Cells["gioiTinh"].Value.ToString();
             dtngaysinh.Value = Convert.ToDateTime(row.Cells["ngaySinh"].Value.ToString());
         }
-        
+        private bool travegioitinh()
+        {
+            if (cbgiotinhkh.Text == "Nam")
+                return true;
+            else
+                return false;
+        }
         private void btnsua_Click(object sender, EventArgs e)
         {
-            
+            temp = 2;
+            trangthai(true);
 
         }
 
         private void btnxoa_Click(object sender, EventArgs e)
         {
-          
+            
         }
 
         private void btnluu_Click(object sender, EventArgs e)
         {
-             
+            khachhangBLL khBLL = new khachhangBLL();
+            if (temp == 2)
+            {
+                khBLL.sua_khachhang(txttenkh.Text, dtngaysinh.Value, travegioitinh(), txtcmt.Text, txtdiachi.Text, txtsdt.Text, cbquoctich.Text, int.Parse(txtmakhachhang.Text));
+                hienthi();
+                MessageBox.Show("Bạn đã lưu thành công", "Thông báo cập nhật", MessageBoxButtons.OK, MessageBoxIcon.Question);
+            }
+            else
+            {
+                khBLL.them_khachhang(txttenkh.Text, dtngaysinh.Value, travegioitinh(), txtcmt.Text, txtdiachi.Text, txtsdt.Text, cbquoctich.Text);
+                hienthi();
+            }
         }
 
         private void btnthoat_Click(object sender, EventArgs e)
