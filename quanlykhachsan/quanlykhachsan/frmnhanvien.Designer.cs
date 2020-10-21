@@ -1,4 +1,6 @@
-﻿namespace quanlykhachsan
+﻿using System;
+
+namespace quanlykhachsan
 {
     partial class frmnhanvien
     {
@@ -401,6 +403,7 @@
 
         }
 
+        
         #endregion
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtsdt;
