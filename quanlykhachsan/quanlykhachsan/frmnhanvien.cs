@@ -49,7 +49,16 @@ namespace quanlykhachsan
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+            DataGridViewRow row = new DataGridViewRow();
+            row = dataGridView1.Rows[e.RowIndex];
+            txtmanv.Text = row.Cells["maNhanVien"].Value.ToString();
+            txttennv.Text = row.Cells["hoTen"].Value.ToString();
+            txtscm.Text = row.Cells["soChungMinh"].Value.ToString();
+            txtsdt.Text = row.Cells["soDienThoai"].Value.ToString();
+            txtdiachi.Text = row.Cells["diaChi"].Value.ToString();
+            cbgioitinh.Text = row.Cells["gioiTinh"].Value.ToString();
+            dtngaysinh.Value = Convert.ToDateTime(row.Cells["ngaySinh"].Value.ToString());
+            dtngayvaolam.Value = Convert.ToDateTime(row.Cells["ngayVaoLam"].Value.ToString());
         }
 
         private void btnthem_Click(object sender, EventArgs e)
@@ -87,7 +96,24 @@ namespace quanlykhachsan
         }
         private void btnluu_Click(object sender, EventArgs e)
         {
-            
+            trangthai(false);
+            if(temp==1)
+            {
+                nhanvienBLL nvBLL = new nhanvienBLL();
+                nvBLL.them_nhanvien(txttennv.Text, travegioitinh(), dtngaysinh.Value, txtscm.Text, txtdiachi.Text, txtsdt.Text, dtngayvaolam.Value);
+                hienthi();
+            }
+            else
+            {
+                nhanvienBLL nvBLL = new nhanvienBLL();
+                nvBLL.sua_nhanvien(txttennv.Text, travegioitinh(), dtngaysinh.Value, txtscm.Text, txtdiachi.Text, txtsdt.Text, dtngayvaolam.Value,int.Parse(txtmanv.Text));
+                hienthi();
+            }
+            btnluu.Enabled = false;
+            btnhuy.Enabled = false;
+            btnsua.Enabled = true;
+            btnthem.Enabled = true;
+            btnxoa.Enabled = true;
         }
 
         private void btnthoat_Click(object sender, EventArgs e)
