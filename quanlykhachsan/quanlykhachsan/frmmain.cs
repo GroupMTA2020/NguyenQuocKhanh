@@ -105,10 +105,25 @@ namespace quanlykhachsan
             dttpngaybatdauthue.Value = Convert.ToDateTime(row.Cells["ngayDen"].Value.ToString());
 
         }
+        private void thanhtoan()
+        {
+            TimeSpan Time = (dttpngayketthucthue.Value - dttpngaybatdauthue.Value);
+            int TongSoNgay = Time.Days + 1;
+            int ngaybatdau = dttpngaybatdauthue.Value.Day;
+            int ngayketthuc = dttpngayketthucthue.Value.Day;
 
+            if (ngaybatdau > ngayketthuc)/// vào từ sáng đén tối vẫn tính là 1 ngày
+                MessageBox.Show("nhập sai ngày!! vui long nhập lại", "Thông báo");
+            else
+                txttongtien.Text = (TongSoNgay * int.Parse(txtdongiatp.Text)).ToString();
+        }
         private void TPTinhTien_Click(object sender, EventArgs e)
         {
-            
+            thanhtoan();
+            // thuephongBLL tpBLL = new thuephongBLL();
+            //   tpBLL.tinhtien(dttpngayketthucthue.Value, float.Parse(txttongtien.Text.Trim()),int.Parse(txtmathuephong.Text.Trim()),int.Parse(txtTPPhong.Text.Trim()));
+            hienthitraphong();
+            MessageBox.Show("Số tiền phải trả là : " + txttongtien.Text, "Tổng tiền");
         }
     }
 }
