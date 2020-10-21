@@ -42,45 +42,70 @@ namespace quanlykhachsan
         }
         private void frm_load(object sender, EventArgs e)
         {
-         
+            hienthiphong();
+            hienthikhachhang();
+            dtTuNgaytp.Value = DateTime.Now;
         }
 
         private void btndangxuat_Click(object sender, EventArgs e)
         {
-            
+            frmmainquanlykhachsan.ActiveForm.Close();
+            frmdangnhap frm = new frmdangnhap();
+            frm.Show();
         }
 
         private void dgkhachhang_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-           
+            DataGridViewRow row = new DataGridViewRow();
+            row = dgkhachhang.Rows[e.RowIndex];
+            txtmakhtp.Text = row.Cells["maKhachHang"].Value.ToString();
         }
 
         private void btThuePhongOK_Click(object sender, EventArgs e)
         {
-            
+            thuephongBLL tpBLL = new thuephongBLL();
+            tpBLL.them_thuephong(int.Parse(txtmakhtp.Text.Trim()), dtTuNgaytp.Value, int.Parse(txtPhongtp.Text.Trim()));
+            MessageBox.Show("thuê phòng thàng công", "Thông báo");
         }
 
         private void Tabphong_Click(object sender, EventArgs e)
         {
-            
+            hienthiphong();
+            hienthitraphong();
         }
 
         private void bHuyBo_Click(object sender, EventArgs e)
         {
-            
+            txtPhongtp.Clear();
+            txtphongdt.Clear();
+            txtmakhtp.Clear();
         }
 
         private void checkBDatPhongTruoc_CheckedChanged(object sender, EventArgs e)
         {
-            
+            if (checkBDatPhongTruoc.Checked == true)
+                trangthai(false);
+            else
+                trangthai(true);
         }
 
         private void dtgvThucDon_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-           
+
+            DataGridViewRow row = new DataGridViewRow();
+            row = dgtraphong.Rows[e.RowIndex];
+            txtTPPhong.Text = row.Cells["maPhong"].Value.ToString();
+            txtTPTenKH.Text = row.Cells["tenKhachHang"].Value.ToString();
+            txtTPSoCMND.Text = row.Cells["chungMinhNhanDan"].Value.ToString();
+            txtTPSoDT.Text = row.Cells["soDienThoai"].Value.ToString();
+            txtTPDiaChi.Text = row.Cells["diaChi"].Value.ToString();
+            txtdongiatp.Text = row.Cells["donGia"].Value.ToString();
+            txtmathuephong.Text = row.Cells["donGia"].Value.ToString();
+            dtngaysinh.Value = Convert.ToDateTime(row.Cells["ngaySinh"].Value.ToString());
+            dttpngaybatdauthue.Value = Convert.ToDateTime(row.Cells["ngayDen"].Value.ToString());
+
         }
-       
+
         private void TPTinhTien_Click(object sender, EventArgs e)
         {
             
