@@ -17,10 +17,29 @@ namespace quanlykhachsan
         {
             InitializeComponent();
         }
- 
-        
-        
-        
+
+        private void hienthikhachhang()
+        {
+            khachhangBLL pbll = new khachhangBLL();
+            dgkhachhang.DataSource = pbll.hienthikhachhang();
+        }
+        private void hienthiphong()
+        {
+            phongBLL pbll = new phongBLL();
+            dtgvDanhSachphong.DataSource = pbll.hienthithongtinphong();
+        }
+        private void hienthitraphong()
+        {
+            thuephongBLL tpBLL = new thuephongBLL();
+            dgtraphong.DataSource = tpBLL.hienthi_thuetheophong();
+        }
+        private void trangthai(bool t)
+        {
+            txtPhongtp.Enabled = t;
+            dtTuNgaytp.Enabled = t;
+            txtphongdt.Enabled = !t;
+            dtngaydattruoc.Enabled = !t;
+        }
         private void frm_load(object sender, EventArgs e)
         {
          
