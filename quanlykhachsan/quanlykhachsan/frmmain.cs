@@ -109,10 +109,8 @@ namespace quanlykhachsan
         {
             TimeSpan Time = (dttpngayketthucthue.Value - dttpngaybatdauthue.Value);
             int TongSoNgay = Time.Days + 1;
-            int ngaybatdau = dttpngaybatdauthue.Value.Day;
-            int ngayketthuc = dttpngayketthucthue.Value.Day;
 
-            if (ngaybatdau > ngayketthuc)/// vào từ sáng đén tối vẫn tính là 1 ngày
+            if (dttpngayketthucthue.Value < dttpngaybatdauthue.Value)/// vào từ sáng đén tối vẫn tính là 1 ngày
                 MessageBox.Show("nhập sai ngày!! vui long nhập lại", "Thông báo");
             else
                 txttongtien.Text = (TongSoNgay * int.Parse(txtdongiatp.Text)).ToString();
